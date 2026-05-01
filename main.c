@@ -1,30 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
-int Maximum=0;int count=0;
-int birthdayCakeCandles(int candles[], int n) {
-    for(int i = 0; i < n; i++) {
-            if(candles[i]>Maximum){
-                Maximum=candles[i];
-            }
-            }
-    for(int i = 0; i < n; i++){
-        if(candles[i]==Maximum){
+int birthdayCakeCandles(int candles[], int age) {
+    int Maximum = candles[0];
+    int count = 1;
+
+    for(int i = 1; i < age; i++) {
+
+        if(candles[i] > Maximum) {
+            Maximum = candles[i];
+            count = 1;
+        } else if(candles[i] == Maximum) {
             count++;
         }
     }
+
     return count;
 }
-
-
 int main()
-{   int n;
+{   int age;
     printf("Please enter the age: ");
-    scanf("%d",&n);
-    int candlesHeight[n];
-    for(int i=0;i<n;i++){
+    scanf("%d",&age);
+    int candlesHeights[age];
+    for(int i=0;i<age;i++){
         printf("Please enter the candle number %d: ",i+1);
-        scanf("%d",&candlesHeight[i]);
+        scanf("%d",&candlesHeights[i]);
     }
-    int CountOfMaximumHeight=birthdayCakeCandles(candlesHeight,n);
+    int CountOfMaximumHeight=birthdayCakeCandles(candlesHeights,age);
     printf("the maximum height has appeared %d times",CountOfMaximumHeight);
 }
